@@ -25,7 +25,7 @@ export function makeClassComponentObserver(
     if (componentClass[mobxObserverProperty]) {
         const displayName = getDisplayName(target)
         console.warn(
-            `The provided component class (${displayName}) 
+            `The provided component class (${displayName})
                 has already been declared as an observer component.`
         )
     } else {
@@ -63,8 +63,8 @@ export function makeClassComponentObserver(
             // Render may have been hot-swapped and/or overriden by a subclass.
             const displayName = getDisplayName(this)
             console.warn(
-                `The reactive render of an observer class component (${displayName}) 
-                was overriden after MobX attached. This may result in a memory leak if the 
+                `The reactive render of an observer class component (${displayName})
+                was overriden after MobX attached. This may result in a memory leak if the
                 overriden reactive render was not properly disposed.`
             )
         }
@@ -131,7 +131,7 @@ function makeComponentReactive(render: any) {
         let rendering = undefined
         reaction.track(() => {
             try {
-                rendering = _allowStateChanges(false, baseRender)
+                rendering = _allowStateChanges(true, baseRender)
             } catch (e) {
                 exception = e
             }
